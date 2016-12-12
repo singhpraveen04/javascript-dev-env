@@ -1,0 +1,76 @@
+options of weservers for javascript development:
+1) http-server - lightwight, ultra-simple and single command servers current directory
+2) live-server - lightweight and support live-reloading
+3) express - Comprehensive, highly configurable, Production grade, can run it everywhere
+4) budo - integrates with Browserify, Includes hot reloading
+5) webpack dev server - Built on to Webpack, Serves from memory, include hot reloading
+6) Browsersync - Dedicated IP for sharing work on LAN, All interactions remain in sync, Great for cross-device testing, Integrates with Browserify, Webpack, Gulp, express etc.
+
+express alternatives
+1) koa
+2) hapi
+
+We are gonna use Express:
+
+Lets configure express.
+
+create srcServer.js file.
+
+use command node buildScripts/srcServer.js
+
+create a boilerplate html code in src folder as well.
+
+
+Sharing Work-in-progress:
+
+to share your local code progress on public network. (Instead of aloud services) use the following tools:
+1) localtunnel
+	Easily share work on your local machine
+	Easiest Setup
+	Ultra-Versatile
+
+	Usage: 
+	1. npm install localtunnel -g
+	2. Start your app
+	3. lt --port 3000
+
+2) ngrok
+	Secure tunnel to your local machine
+	Easy Setup
+	Secure
+
+	Usage:
+	1. Sign up
+	2. Install ngrok
+	3. Install authtoken
+	4. Start your app
+	5. ./ngrok http 80
+
+3) Surge
+	QUickly host static files to public URL
+	No firewall hole
+	hosting persists
+
+	Usage:
+	1. npm install -g surge
+	2. surge
+
+
+4) now
+	Quickly deploy Node.js to the cloud
+	No firewall hole
+	hosting persists
+
+	Usage:
+	1. npm insall -g now
+	2. Create start script
+	3. now
+
+
+Lets use localtunnel.
+
+lt --port 3000 --subdomain pravi
+then URL is https://pravi.localtunnel.me
+
+localtunnel plus browsersync is a compelling combination.
+

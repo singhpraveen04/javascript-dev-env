@@ -1,0 +1,103 @@
+We shouldn't keep track of coding standard manually. we can automate this and notify us when we make a typo, linting offers both. So we can check for errors in compile time rather than runtime.
+
+Why Lint?
+1) Enforce Consistency
+	Curly brace position
+	confirm/alert
+	Trailing commas
+	Globals
+	eval
+2) Avoid Mistakes
+	Extra parenthesis
+	Overwriting function
+	Assignment in conitional
+	Missing default case in switch
+	debugger/console.log
+
+Linters options:
+1) JSLint - Original
+2) JSHint - Modern
+3) ESLint - Modern and most popular. 
+
+Now core decisions:
+1) Config format?
+2) Which built-in rules?
+3) Warnings or errors?
+4) Which plugins?
+5) Use preset instead?
+
+1) Config format:
+options present:
+.eslintrc.js
+.eslintrc.yaml
+.eslintrc.yml
+.eslintrc.json
+.eslintrc
+package.json
+
+most common approach  is to make a dedicted .eslintrc file. but its not tied to npm.
+
+As we are already using package.json, we can configure.
+to configure we can add a section called eslintConfig
+
+"eslintConfig": {
+	"plugins": ["example"],
+	"env": {
+		"example/custom": true
+	}
+}
+
+Same config will be used in .eslintrc config.
+
+2) Which rules?
+Refer ESLint docs for available rules.
+
+3) Warnings or errors?
+Warnings:
+	Can continue development
+	Can be ignored
+	Team must agree: Fix warnings
+
+Error:
+	Breaks the build
+	Cannot be ignored
+	Team is forced to comply
+
+4) Plugins:
+e.g. eslint-plugin-react, eslint-plugin-angular
+refer awesome-eslint
+
+5) Use a preset?
+the decisions we discussed earlier can be avoided using this one.
+
+You can use recommended Preset and modify the settings as per your needs.
+
+************************************************************
+Issues with ESLint:
+a) ESLint doesn't watch files.
+
+We can execute eslint by command line but eslint doesn't include a watch setting built-in. So running eslint by itself won't work.
+
+We cann fix it using:
+1) eslint-loader
+	Tied to webpack
+	Re-lints all files upon save.
+2) eslint-watch
+	ESLint wrapper that adds file watch
+	Not tied to webpack
+	Better warning/error formatting
+	Displays clean message
+	Easily lint tests and build scripts too
+
+b) ESLint doesn't support many experimental JavaScript Features.
+You can use babel-eslint in this case.
+
+Why Lint via an Automated Build Process?
+1. One place to check
+2. Universal configuration
+3. Part of continuous integration
+
+Lets setup ESLint
+lets create a separate eslintrc file.
+and setup eslint-watch in package.json script
+

@@ -1,0 +1,121 @@
+Minification: Its about speeding page loads and saving bandwidth.
+How does Minification works:
+1) Shorten variable and function names
+2) Removes comments
+3) Removes whitespace and new lines
+4) Dead code elimination/Tree-shaking
+5) Debug via Sourcemap
+
+We'll be using Webpack1
+
+Lets set up these things now.
+
+Copy webpack.config.dev.js and name it webpack.config.prod.js
+Change devtool to source-map
+in path change src to dist
+and add entries in plugin and import webpack.
+
+Now create a new file build.js in buildscripts folder
+
+Let's run final production version on local machine. (Not mandatory step)
+
+create file distserver in buildscripts and copy the content from srcserver and modify
+remove webpack related things.
+
+and add support to run static files.
+app.use(express.static('dist'));
+
+and lets enable gzip compression.
+
+
+Then lets use real api for production environment and modify our baseUrl file.
+
+Then add some npm scripts to automate the production build and execute the script build.
+
+but we get 404 bcoz index html is not created.
+
+If we are bundling the code then we need to reference it in the html file.
+
+Why Manipulate HTML for production?
+Reference bundles automatically
+Handle dynamic bundle names
+Inject production only resources
+Minify
+
+Ways to reference the bundle
+Hard code it
+
+but there are better ways:
+1) Manipulate via Node and use regular expression to manipulate sections or replace placeholders
+2) html-webpack-plugin package - simplifies creation of html file
+
+Lets use this approach.
+
+Add webpack plugin code in webpack config and remove bundle js reference from index html.
+Also modify webpack dev config.
+
+lets further enhance this by adding moe configs in minify settings.
+
+This works fine but when our application is large its better to split bundle and save some bandwidth.
+
+Why bundle splitting?
+Speed initial page load
+Avoid re-downloading all libraries
+
+Lets setup bundle splitting using webpack
+we can split bundle per page.
+but another approach is splitting 3rd party libraries in a separate bundle than our application bundle.
+
+lets update webpack config.
+**********************************
+
+To save bandwidth we can configure our application so that javascript bundle doesn't expire for upto a year. We need to enable cache busting.
+
+Why Bust Cache?
+Save HTTP Requests
+Force request for latest version
+
+Plan for busting cache:
+Hash bundle filename
+Generate HTML dynamically
+
+we'll use webpack-md5-hash plugin.
+
+we can also use this setup to generate css files as well.
+
+to make this happen lets use extract text plugin
+and modify css loader code in webpack config.
+
+************************************************************
+
+Error logging can be done using following tools:
+Track.js
+Sentry
+New Relic
+Raygun
+
+What to look for?
+Error Metadata
+	Browser
+	Stack Trace
+	Previous actions
+	Custom API for enhanced tracking
+Notifications & Integrations
+Analytics and filtering
+Pricing
+
+Lets setup error tracking via track.js
+
+sign up and use source in head of index html
+
+In order to only run it in production, conditionally add this track js detail in Prod only.
+
+Let's use EJS with Webpack
+
+
+
+
+
+
+
+

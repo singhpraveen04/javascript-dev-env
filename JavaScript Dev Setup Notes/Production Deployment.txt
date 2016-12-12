@@ -1,0 +1,42 @@
+In real production you should try to separate the UI and API.
+Why?
+Simple, low risk, UI only deploys
+Separate Concerns
+	Separate teams
+	Less to understand
+	Scale back-end separately
+Cheap UI hosting
+Serve UI via a content delivery network (CDN)
+Use the API tech you like
+
+Automated Deployment:
+Github pages, Surge host static files only on cloud.
+AWS, Azure, Heroku, Firebase, Google cloud platform are other cloud hosting options.
+
+For API we will use Heroku and for UI we will use Surge.
+
+Let's setup automated deployment on API to Heroku.
+
+we will use a new project for this.
+
+use commands:
+heroku login
+heroku create
+heroku git:remote -a <heroku app name>
+git push heroku master
+
+Now api is hosted on Heroku.
+
+Use the URL and upade Base URL file and distserver - remove json section.
+
+Let's use surge to deploy UI section.
+
+In package json add following script:
+"deploy": "surge ./dist"
+
+npm run deploy
+
+
+
+
+

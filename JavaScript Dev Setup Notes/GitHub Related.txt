@@ -1,0 +1,4 @@
+git clone "<Github repo>"
+
+basic commands
+

@@ -1,0 +1,44 @@
+Look for following features:
+1) Strong ES2015+ support
+	Autocompletion
+	Parse ES6 imports
+	Report unused imports
+	Automates refactoring
+2) Framework intelligence
+3) Built-in terminal
+
+Options:
+Atom
+Webstorm
+Brackets
+VSCode (Recommended)
+
+Editor Config (Space vs Tab)
+- if we create .editorconfig file and place it in root folder, we can set up common settings about styling
+
+one example of editor config (also install plugin from extension)
+# editorconfig.org
+
+root = true
+
+
+
+[*]
+
+indent_style = space
+
+indent_size = 2
+
+end_of_line = lf
+
+charset = utf-8
+
+trim_trailing_whitespace = true
+
+insert_final_newline = true
+
+
+
+[*.md]
+
+trim_trailing_whitespace = false

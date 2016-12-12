@@ -1,0 +1,132 @@
+Testing and CI is not directly a part of JavaScript.
+We are dependedant on other tools and frameworks for this.
+
+Here we will focus on unit testing.
+Unit testing focuses on testing of single function or module in an automated fashion.
+Unit tests mock out external dependancies like API calls, Database and file system interaction.
+
+While setting up unit testing environment for an application we need to make the following decisions:
+1) Framework
+2) Assertion Libraries
+3) Helper Libraries
+4) Where to run tests
+5) Where to place tests
+6) When to tun tests
+
+1) Testing frameworks:
+Lot of options:
+a) Mocha - Highly popular, configurable and large ecosystem of support
+b) Jasmine - Nearly as popular as Mocha, but it has assertion library built-in
+c) Tape - Leanest and simplest, Minimal configuration
+d) Qunit - Oldest. developed to use with Jquery
+e) AVA - New. Runs test in parallel and only re-runs impacted tests
+f) Jest - from Facebook and quite popular with React developers but since its just nice wrapper over jasmine any one can use it.
+
+You can use anyone.
+
+2) Assertion Library:
+Jasmine and Jest come with one but Mocha doesn't.
+
+Assertion is to declare what you expect.
+
+Popular Assertion Libraries:
+Chai
+Should.js
+expect
+
+We are gonna use Chai with Mocha.
+
+3) Helper Library:
+Options:
+JSDOM:
+	Simulate the browser's DOM
+	Run DOM-related tests without browser
+
+Cheerio:
+	Jquery for the server
+	Query virtual DOM using jQuery selectors
+	
+4) Where to run tests:
+Popular approaches:
+a) Browser
+	- Karma and Testem are popular test runners when testing in an actual browser.However, opening an actual browser requires more configuration and it is slower.
+b) Headless Browser
+	- PhantomJS
+	Headless browser doesn't have visible user interface and run v8 JS engine behind the scenes.
+c) Utilize in-memory DOM -
+	JSDOM - lighter weight alternative to PhantomJS.
+
+We will use JSDOM
+
+5) Where do test files belong?
+Centralized - centralize all your tests in a folder tests or something similar. All tests are completely separate from source code. Mocha works in this manner and tries to locate tests in test folder.
+	Less noise in src folder
+	Deployment confusion
+	Inertia
+Alongside - with other source files.
+	Easy imports
+	Clear visibility
+	Convenient to open
+	No recreating folder structure
+	Easy file moves
+
+6) When should tests run?
+Unit test should run everytime you hit save.
+	Rapid feedback
+	Facilitates TDD (test driven development)
+	Automatic = Low friction
+	Increases test visibility
+
+
+Unit Test Vs Integration Tests:
+Unit test:
+	Test a small unit
+	Often single function
+	Fast
+	Run upon save
+
+Integration Tests:
+	Test multiple units
+	Often involves clicking and waiting
+	Slow
+	Often run on demand, or in QA
+
+Lets setup testing.
+add new file testSetup.js in buildScripts folder.
+Then add script in package.json and add new test index.text.js.
+
+Now let's use JSDOM:
+add new tests in index test.
+
+
+Now lets run tests on save.
+modify package json.
+
+Let's move on to continuous integration.
+
+Why CI?
+Forgot to commit new file
+Forgot to update package.json
+Commit doesn't run cross-platform
+Node version conflicts
+Bad merge
+Doesn't run tests
+Catch mistakes quickly
+
+What does a CI Server do?
+Run Automated build
+Run your tests
+Check code coverage
+Automate Deployment
+
+Options:
+travis - runs on liux
+Appveyor - on windows
+Jenkins
+
+Lets setup CI using Travis CI
+use .travis.yml and link git hub
+
+Lets use appveyor also.
+use appveyor.yml and link git hub.
+

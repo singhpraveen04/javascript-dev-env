@@ -1,0 +1,61 @@
+Automation options:
+1) Grunt
+	The "Original"
+	Configuration over code (Grunt File - Configuration based json file)
+	Writes intermediary files between steps
+	Large plugin ecosystem
+	
+2) Gulp
+	In-memory streams
+	DOesn't write files on disk, instead it used pipes to send the output of one step to 	the subsequent step
+	Fast
+	Code over configuration - Gulp file (Code based)
+	Large plugin ecosystem
+	
+3) npm scripts
+	Declared in package.json
+	Leverage your OS' command line
+	Directly use npm packages
+	Call separate Node scripts
+	Convention-based pre/post hooks
+	Leverage world's largest package manager
+
+Let's go for npm scripts.
+Why npm scripts?
+	Use tools directly
+	No need for separate plugins
+	simpler debugging
+	better docs
+	Easy to learn
+	Simple
+
+Implementation:
+Use script section of package json.
+for start key provide node command.
+use it using npm start
+Actually: 
+npm start = npm run start
+npm stop = npm run stop
+
+for other use "run" explicitly
+
+to receive a helper message when we starting our environment.
+in a new file startMessage.js:
+1) write message using console log and chalk
+2) in package json: create a new script prestart to execute this js file
+
+convention with npm scripts:
+1) If you add a prefix "pre" to any script in our case "start" then "prestart" will execute before "start"
+2) Similarly, "poststart" will run after "start"
+
+
+Create new scripts for nsp check and localtunnel as well.
+
+
+* To execute multiple scripts at the same time:
+use package npm run all
+
+lets say at start we wanna use security check as well
+start: "npm-run-all --parallel security-check build....."
+or rename build.... to different name
+

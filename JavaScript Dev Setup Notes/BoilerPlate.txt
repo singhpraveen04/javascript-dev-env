@@ -1,0 +1,12 @@
+1) GitHub and Git Setup
+2) Editor selection
+3) Package Management
+4) Deployment Web Server
+5) Task Automation
+6) Transpiling
+7) Bundling
+8) Linting
+9) Testing and Continuous Integration
+10) Http calls and Mock API
+11) Production Build
+12) Production Deployment

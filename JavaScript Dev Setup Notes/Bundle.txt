@@ -1,0 +1,130 @@
+NPM packages use commonJS pattern that browsers don't understand
+
+So we need to bundle npm packages in a format that browser can understand.
+
+We can also use bundle to:
+Package project into file(s)
+Improve node performance
+
+******************************************************************************
+
+There are 5 module formats in JavaScript now a days:
+IIFE - Immediately Invoked Function Expressions
+AMD - Asynchronous Module Definition
+CJS - CommonJS - Popularized by Node
+UMD - Universal Module Definition - Blends AMD with CommonJS
+ES6 Modules
+
+History of module formats:
+At first we have global variables
+myGlobal
+
+Global variables should be avoided because they make harder to understand code and maintain.
+
+Then we came up with IIFE: Way to encapsulate javascript
+(function() {
+	//my code here
+})();
+
+Then we saw AMD used by tools like require JS to encapsulate javascript
+define(['jq'], function(jq) {});
+
+but these patterns are older.
+
+In node we use commonJS pattern.
+var jquery = require('jquery');
+
+In ES6 or new version of javascript, we can use ES6 Module:
+import jQuery from 'jquery'
+
+
+Why ES6 Module:
+ES2015 module
+	Standardized
+	Statically analyzable
+		improved autocomplete
+		intelligent refactoring
+		fails fast
+		tree shaking
+	Easy to read
+		Named imports
+		Default exports
+
+*******************************************************************
+
+Selecting a bundler:
+Bundler takes all of the javascript files and intelligently package them for target environment 
+
+Popular bundler options:
+Require.js
+	First Popular Bundle
+	Utilizes and helped popularize AMD pattern
+
+Modern Options:
+browserify
+Webpack
+Rollup
+JSPM
+
+Browserify:
+	The first bundler to reach mass adoption
+	Bundle npm packages for the web
+	Plugin ecosystem
+
+Webpack:
+	Bundles more than just JS
+	Import CSS, images, etc like JS
+	Built in hot-reloading web server
+
+Rollup:
+	Tree shaking - saves space
+	Faster loading production code
+	Quite new
+	Great for library authors
+	No hot reloading and code splitting yet
+
+JSPM:
+	Uses SystemJS, a universal module loader
+	Can laod modules at runtime
+	Has its own package manager
+	Can install from npm, git
+	Uses Rollup
+
+We are gonna use Webpack.
+Why webpack?
+Much more than just JS
+	CSS
+	Images
+	Fonts
+	HTML
+Bundle splitting
+Hot module reloading
+Webpack 2 offers tree shaking
+
+Lets set up webpack.
+and create webpack.config.dev.js in root folder
+And provide the settings.
+
+Once webpack is setup lets configure development server express to use webpack
+add code in srcServer.js
+configure index js and index html
+
+to setup css files in bundle:
+create index.css and configure it in index.js
+
+*********************************************************
+
+Now let's debug this bundle.js.
+Because bundle.js is hard to debug for errors, let's use sourcemaps.
+
+Sourcemaps:
+	Maps code back to original source - If we are using ES6 code then we will see ES6 in browser also.
+	Part of our build.
+	But to save bandwidth, it is onle downloaded if you open developer tools.
+
+Lets configure sourcemaps:
+in webpack config, under devtool we have already setup 'inline-source-map'
+
+for demo, lets use debugger keyword in index.js
+	
+	

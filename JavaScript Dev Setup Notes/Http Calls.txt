@@ -1,0 +1,100 @@
+Http Call Approaches:
+for Node:
+Provide a built-in package http. Little library that provide basic functionality for making http requests.
+request in higher level library that makes it simpler to make these calls.
+
+In browser:
+XMLHttpRequest
+jQuery
+Framework based
+Fetch - Modern replacement for XMLHttpRequest.
+Some browsers lack native support and to implement it use polyfill
+
+for node and browser(both client and server):
+isomorphic-fetch
+xhr npm package
+SuperAgent
+Axios - Offers clean Promise based API. Its XMLHttpRequest library which takes all good parts from Augular's $http and throws out everthing else.
+
+*** Centralize API Calls: Make calls from single spot.
+why?
+Configure all calls
+Handle preloader logic
+Handle errors
+Single seam for mocking
+
+As we are building web app only Lets set up fetch and use polyfill to make sure code runs cross browser and centralize http calls.
+
+Lets use express to make a single API call.
+Open srcServer.js
+use some mocked data.
+
+Now lets use fetch.
+Make api folder and userApi.js
+import whatwg-fetch package for browsers with no native fetch  support.
+implement code for http call request.
+
+Modify index html and js as well. test also :(
+
+***************************************************************
+
+Mocking HTTP:
+
+Its often helpful to mock http.
+
+Why Mock HTTP?
+Unit Testing
+Instant Response
+Keep working when services are down
+Rapid Prototyping
+Avoid inter-team bottlenecks
+Work offline
+
+How to mock http:
+Few Ways to get it done:
+1) Nock:
+	If writing unit tests. 
+	Tell nock specific url you want to mock and what it should return. Nock will hijack any http request to the URL you specified and return what you specified instead.
+
+2) Static JSON file can also be used.
+
+3) Create development webserver that mocks out real API
+few libraries:
+a) api-mock 
+b) JSON Server - Create fake database using Static JSON, and when you start up your webserver it creates a webservice that works with Static JSON behind the scenes. When you delete or add records, it actually updates the file.(Cool isn't it? like full simulation of real working api)
+c) JSON Schema faker - If you want to use dynamic data instead of hard coded data. Generates fake data for you.
+or wire up a fake api using browsersync or express.
+
+To create a mock API:
+3 step process:
+1. Declare our schema - Using JSON Schema Faker
+2. Generate Random Data - JSON Schema Faker creates fake data using
+	faker.js, chance.js and randexp.js
+3. Serve Data via API - JSON Server will create an API using JSON file behind the scenes.
+
+We'll use JSON Schema standard used in json-schema.org.
+
+Lets define the schema to define our mock data should look like.
+create file mockDataSchema.js 
+
+Now we have created schema for mock data.
+TO generate mock data:
+create file generateMockData.js
+create package json script generate-mock-data and generate mock data.
+
+Now mock data is ready, lets use JSON server.
+write npm script start-mockapi and execute
+
+to generate random data everytime we start the app.
+and create a script prestart-mockapi before running start-mockapi
+
+to see this data in application:
+modify application to hit mock api instead of express api we created earlier.
+in api folder create baseUrl.js file.
+add details in userapi file.
+
+Now lets implement delete functionality.
+modifyuserapi
+and index js
+
+

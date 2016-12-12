@@ -1,0 +1,44 @@
+Not too long ago bower package manager was the most popular one.\
+But now a days developers have shifted to npm package manager.
+
+Bower became popular by supporting entire web platform and packaging libraries in a format that didn't requrie build step but now a days everyone has a build step.
+
+Bower is actually package manager for front end related files. (Another course)
+
+
+JSPM(Java Script Package Manager) is also another option.It can download packages from its repository as well as npm or bower's repository. It also bundles the code.
+
+We will go ahead with npm.
+
+Install node and npm
+
+copy package json from here:
+bit.ly/jsdevpackagejson
+
+
+use command npm install to download dependencies
+
+- To check package dependencies for known vunerabilities:
+1) Retire.js
+2) Node Security Platform
+
+in Node Security Platform use the following command to check for security:
+nsp check
+
+we can run node security platform by 
+1) Manually
+2) Include it in start script
+
+Options:
+Manually - Easy to forget
+npm install - May be issue later
+production build - expensive to change
+pull request - expensive to change
+npm start  - slows start slightly
+
+To setup node security platform:
+npm install -g nsp
+
+as we are going to execute the process manually, enter the command :
+nsp check
+
